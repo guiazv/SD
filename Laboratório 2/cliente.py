@@ -1,4 +1,4 @@
-from Response import Response
+from classes.Response import Response
 import socket
 
 HOST = 'localhost'

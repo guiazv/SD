@@ -1,4 +1,4 @@
-from Server import Server
+from classes.Server import Server
 
 server = Server()
 
