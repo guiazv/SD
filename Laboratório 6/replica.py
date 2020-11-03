@@ -50,6 +50,7 @@ class Replica(rpyc.Service):
             (host, port) = self.replicas[replica_id]
             replica = rpyc.connect(host, port)
             success = replica.root.give_primary_status(self.id)
+            replica.close()
             if success:
                 self.is_primary = True
                 break
@@ -60,6 +61,7 @@ class Replica(rpyc.Service):
             (host, port) = self.replicas[replica_id]
             replica = rpyc.connect(host, port)
             replica.root.update(self.id, self.x)
+            replica.close()
 
     def exposed_give_primary_status(self, id):
         if not self.is_primary:
